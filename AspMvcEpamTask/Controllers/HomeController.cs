@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspMvcEpamTask.Containers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +11,9 @@ namespace AspMvcEpamTask.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ArticleContainer articleContainer = new ArticleContainer();
+            return View(articleContainer.getArticles());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

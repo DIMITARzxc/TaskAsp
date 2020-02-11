@@ -1,43 +1,80 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-            </div>
+
+    <header id="head">
+        <div class="head_container">
+            <img id="head_img" src="~/Content/img/header.jpg" alt="ROCK">
+            <div class="centered">Music Blog</div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
+    </header>
+    <div class="sidenav">
+        <p>Menu</p>
+        <a href="~/">Main</a>
+        <a href="~/Guest">Visitor</a>
+        <a href="#profile">Form</a>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <div class="main">
+        @RenderBody()
+    </div>
+    <div id="profile">
+        <h2 id="profiletext">Test for check your culture knowledge</h2>
+        @{
+            string[] text = new string[] { "The term hip hop music is sometimes used synonymously with the term rap music", "Employs electronic musical instruments", "though rapping is not a required component of hip hop music; the genre may also", "and hillbilly music, is a genre of popular music that originated in the Southern United States in the early 1920s." };
+        }
+        @using AspMvcEpamTask.Helpers
+        <h3> Date of Established Red Hot Chili Peppers </h3>
+        @using (Html.BeginForm())
+        {
+            @Html.CheckBox("PeppersBox", new { id = "firstyear", value = "1995" })
+            <span>1995</span><br />
+            @Html.CheckBox("PeppersBox", new { id = "secondyear", value = "1974" })
+            <span>1974</span><br />
+            @Html.CheckBox("PeppersBox", new { id = "thirdyear", value = "1983" })
+            <span>1983</span><br />
+            @Html.CheckBox("PeppersBox", new { id = "fourthyear", value = "2000" })
+            <span>2000</span>
+            <br />
+            <h3>Hip-Hop genre.... What is talking it about</h3>
+            @Html.CreateList(text, false)
+
+            @Html.RadioButton("hiphopbut", "one")
+            <span>one</span><br />
+            @Html.RadioButton("hiphopbut", "two")
+            <span>two</span><br />
+            @Html.RadioButton("hiphopbut", "three")
+            <span>three</span><br />
+            @Html.RadioButton("hiphopbut", "four")
+            <span>four</span><br />
+            <br />
+            <h3>What genre does Black Sabbath perform in?</h3>
+
+            @Html.RadioButton("groupBox", "Rap")
+            <span>Rap</span><br />
+            @Html.RadioButton("groupBox", "Country")
+            <span>Country</span><br />
+            @Html.RadioButton("groupBox", "Rock")
+            <span>Rock</span>
+            <br />
+            <br />
+
+            <input type="submit" value="Grade Me">
+            <input type="reset" value="Clear">
+        }
+    </div>
+    <footer>
+       <div id="foot">
+           <p>&copy; @DateTime.Now.Year - DIMITAR <a id="return-button" href="#head">↑ TOP ↑</a> </p>
+           </div>
+    </footer>
 </body>
 </html>

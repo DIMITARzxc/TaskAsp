@@ -1,0 +1,47 @@
+﻿@model List<AspMvcEpamTask.Models.VisitorReview>
+<style>
+
+    .table_guest {
+        border-collapse: collapse;
+        border-radius: 1em;
+        overflow: hidden;
+    }
+
+    .tr_guest, .td_guest, .table_guest {
+        padding: 1em;
+        background-image: linear-gradient(rgb(194, 51, 27), rgb(79, 28, 20));
+        border-bottom: 2px solid white;
+    }
+
+    .table_div_guest {
+        text-align: center;
+        margin-left: 20%;
+    }
+</style>
+<div class="table_div_guest">
+    <table class="table_guest">
+
+        @foreach (var review in Model)
+        {
+
+            <tr class="tr_guest">
+                <td class="td_guest"><p style="text-align:center">@review.AuthorName (@review.DateOfReview)  @review.ReviewText</p></td>
+
+            </tr>
+        }
+        <tr class="tr_guest">
+            <td class="td_guest">
+                <p>Want to add a review ?</p>
+                @using (Html.BeginForm("AddReview", "Guest", FormMethod.Post))
+                {
+                    <p>Enter your name: </p>
+                    @Html.TextBox("authorName")
+                    <p>Enter review :</p>
+                    @Html.TextArea("reviewText", null, new { style = "height:10em;width:20em" })
+                    <p><input type="submit" value="Post" /></p>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+
