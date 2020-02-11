@@ -24,17 +24,17 @@ namespace AspMvcEpamTask.Controllers
                 result += hiphopbut;
                 if (result.Contains("1995") && result.Contains("1974") && result.Contains("1983") && result.Contains("2000"))
                 {
-                    percent += 33;
+                    percent += 10;
                 }
                 if (result.Contains("Rock"))
                 {
-                    percent += 33;
+                    percent += 10;
                 }
                 if (result.Contains("three"))
                 {
-                    if (percent == 66)
-                        percent += 34;
-                    else percent += 33;
+                    if (percent == 20)
+                        percent += 11;
+                    else percent += 10;
                 }
 
                 ViewData["music"] = percent;
